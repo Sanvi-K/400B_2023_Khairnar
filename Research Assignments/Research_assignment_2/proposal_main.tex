@@ -1,0 +1,91 @@
+\documentclass[twocolumn]{aastex631}
+
+\journalinfo{ }
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+\usepackage{float}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{ASTR 400B - Research Assignment 2}
+
+
+\author{Sanvi Khairnar}
+\affiliation{Steward Observatory, University of Arizona 
+933 N. Cherry Avenue 
+Tucson, AZ 85721, USA}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+%\begin{abstract}
+%Abstract text
+
+%\end{abstract}
+%-----------------------------------------------------------------------%
+%\keywords{keywords ---}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction} \label{sec:intro}
+
+\subsection{Definition} 
+Two of the largest galaxies in our local group, Milky Way (MW) and Andromeda (M31) are predicted to collide in a few billion years and \citet{Kahn1959} stated that for these two galaxies to merge together they should have much higher mass than the measured stellar mass of the system. This was one of the earliest ideas to suggest that galaxies are embedded in dark matter halo. For the MW and M31 merger their massive dark matter halos will cause significant dynamic friction thus affecting the gravitationally bound system's energy and angular momentum \citep{Cox2008}. This paper will study the kinematics of dark matter halo evolution for the MW and M31 merger event to understand galaxy evolution.
+
+\subsection{Current Understanding of Halo Spin and its Importance in Study of Galaxy Evolution}
+The shape, center concentration and substructure of galaxy halos are strongly related to the merger history of a galaxy \citep{Drakos2019a}. Thus, studying the evolution of dark matter halo for a merger event will help us understand how the halo influences the properties of the merger remnant. 
+
+Angular momentum is significant for understanding of galaxy formation and evolution. Halos are not supported by rotation but acquire angular momentum due to tidal torques which is characterized by the spin parameter, $\lambda$ \citep{Frenk2012}. The spin parameter only depends on the halo mass with very weak negative correlation, whereas the total spin of the halo also depends of the shape of the galaxy, where aspherical halos having larger spin rate \citep{Frenk2012}. Hence, study of dark matter halo evolution in MW and M31 merger would allow to understand the shape and structure of the merger remnant.
+
+\citet{D'Onghia2007} performed numerical simulations to confirm that merger remnants have higher spin rate than average. The authors studied the relation between the merger and spin parameter, $\lambda$ by conducting numerical study for major merger in "relaxed" system and "unrelaxed" system. Figure \ref{fig:spin_para} shows that for relaxed systems defined by off-set parameter, $s<0.1$, the spin parameter has no obvious correlation with the fractional mass accreted, however in unrelaxed systems ($s>0.1$) there is positive correlation between the two. The study further found that this linear correlation is statistically significant and based on the type of merger (major merger or smooth accretion merger), the spin evolution of the system can vary. MW and M31 merger is a major merger and thus has unrelaxed halo systems. So we can expect to observe significant changes in the spin rate during the merger. We can then determine how the spin rate of the remnant differs from the spin rate of MW and M31 individually.\\
+
+\begin{figure}[H]
+\plotone{D'Onghia2007_1.png}
+\caption{Relation between spin parameter and merger \citep{D'Onghia2007} - Top:Relaxed system ; Bottom: Unrelaxed system. Both panels plot the relation between the fraction of mass accreted $f_{merg}$ by the halo during the most important merger till $z=3$ and spin parameter, $lambda$ at $z=0$.
+\label{fig:spin_para}}
+\end{figure}
+
+Once we have determined the spin parameters of the combined system we can further analyse it study the structure, shape, possibly other parameters. \citet{Teklu2015} applied a Kolmogorov-Smirnov (K-S) test for two un-binned Disk and Spheroid galaxies which indicated that the spin parameters for the different morphologies of galaxy have a statistically significant difference. Thus, by determining the structure of spin parameter for the halo we can also find the remnant galaxy's morphology. Hence, this study will help to understand the evolution of galaxies.
+\subsection{Open Questions in the Field}
+MW and M31 is a major merger, however such mergers are rare in single pairs and so it is important to consider more complicated mergers like multiple galaxy merger. Further, in this study we solely focus on dark matter halo evolution which is a good approximation for isolated mergers \citep{Kazantzidis2006} however, for more complicated mergers it is essential to apply the effects of the baryonic matter on the evolution during the merger. This will introduce more degrees of freedom in the model and thus needs more work \citep{Drakos2019a}. Moreover, studying the structural properties of the individual initial galaxies to statistically determine the surrounding density field can help us understand the structure formation for the galaxy. There are several open questions in the field which needs more observation and improved multivariate models to fully understand the evolution process during galaxy mergers.
+
+%-----------------------------------------------------------------------%
+\section{Proposal} \label{sec:proposal}
+\subsection{Specific Questions to Address}
+The focus of this project is to understand how the spin parameter changes during the MW and M31 galaxy merger. For this we need to calculate the average specific angular momentum(ASAM) for both MW and M31 before the merger(i.e. at snapshot $t=0$) and for the final merger remnant of the two galaxies. We also need to find the ASAM value for the combined system of MW+M31 evolve during the merging process. This is essential to compute in order to understand how the two dark matter halos interact with each other to form the new halo.
+
+\subsection{Approach and Methodology}
+We have mass, position and velocity data available for MW and M31 halo particles, from snapshot t=0 till the merger. Using this data we need to first build a function to compute the specific angular momentum for any given halo particle. Specific Angular momentum is given by the equation, 
+\begin{equation} \label{eq1}
+\vec{h} = \vec{r} \times \vec{v} = \frac{\vec{L}}{m}
+\end{equation}
+
+Since we are computing the specific angular momentum(SAM), for merging galaxies it is important that the radii and velocity array used for the computation is relative to the center of mass for the MW+M31 system as shown in Figure \ref{fig:ang_p}.\\
+\begin{figure}[H]
+\plotone{Ang_mom_vector_diagram.png}
+\caption{Computing Specific Angular momentum - Position, velocity for the center of mass(COM) of the particles given by R, V and the relative position and velocity vectors for any particle $m_{i}$ given by $r_{i}$ and $v_{i}$.
+\label{fig:ang_p}}
+\end{figure}
+Thus, based on \ref{eq1} all components for the SAM vector can be computed for all the halo particles by performing the cross product between the relative radius array and relative velocity array for each snapshot. Then, we can compute the magnitude of SAM vector for each particle using the simple equation,
+\begin{equation}
+|\vec{h}| = \sqrt{(h_{i})^2 + (h_{j})^2 + (h_{k})^2}
+\end{equation}
+
+Once we have computed the magnitude of SAM for all the halo particles the only step left is to compute the average of these SAM values for every snapshot. This will give the ASAM value for any required object. For instance to compute the initial ASAM value for MW galaxy, we will use the radii and velocity array for halo particles of only MW galaxy in the new code. 
+
+After we have the ASAM values for any required body, we can then compute the dimensionless spin parameter value for them given by \citet{Peebles1969} using the equation, 
+\begin{equation}\label{eq3}
+\lambda = \frac{J(|E|)^{1/2}}{G(M)^{5/2}}
+\end{equation}
+The spin parameter values can then be used in future study to determine the morphology of the merger.
+\subsection{Hypothesized Results}
+MW and M31 merger will have strong dynamic friction between their dark matter halos, additionally other factors such as direction of halo spins before they collide; restricting conditions for conservation of mass, energy and angular momentum (since the system is gravitationally bound, and if we assume there is no external influence for simplicity), these factors will contribute to reduce the kinetic energy of the remnant system and thus also decreasing the spin.
+
+Although the energy for the system is constant, some of the spin/rotational energy from the halo will be transferred to the center of system to reach equilibrium and form the final system. How much energy is transferred might depend on several factors like, influence of baryonic matter, and total mass of the system. Finally, to keep the angular momentum of the system conserved while the two galaxies merge the spin will decrease further as the radius of the final system increases. As such, we can assume that the spin of the merger remnant should be smaller than the initial spins of MW and M31.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{ASTR400B_proposal}
+\bibliographystyle{aasjournal}
+
+\end{document}
